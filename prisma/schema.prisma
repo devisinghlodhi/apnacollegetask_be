@@ -14,10 +14,22 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email  String   @unique
-  name      String
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  email      String     @unique
+  name       String
+  password   String
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  SubTopics  SubTopic[]
+  subTopicId String?    @db.ObjectId
+}
+
+model SubTopic {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  difficulty String // Difficulty level: Easy, Medium, Hard
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user_id    String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.ObjectId
 }
