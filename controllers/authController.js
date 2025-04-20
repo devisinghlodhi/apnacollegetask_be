@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+globalThis.crypto = crypto;
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { signToken } from "../utils/jwt.js";

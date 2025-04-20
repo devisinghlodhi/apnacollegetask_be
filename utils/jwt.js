@@ -1,4 +1,5 @@
-// utils/jwt.js
+import crypto from 'crypto';
+globalThis.crypto = crypto;
 import { SignJWT, jwtVerify } from 'jose';
 import { configDotenv } from "dotenv";
 configDotenv()
