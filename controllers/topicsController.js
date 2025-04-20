@@ -15,7 +15,6 @@ const topicdata = async (req, res) => {
         }
       });
       const topicIds = allTopics.map((item)=> item.topicId)
-      console.log(topicIds)
       const finalData = data.map((item)=>{
         if(topicIds.includes(String(item.id))){
           item.status = true
@@ -24,7 +23,6 @@ const topicdata = async (req, res) => {
         }
         return item;
       })
-      // return res.status(200).json({ data });
       return res.status(200).json({ data: finalData });
     } catch (error) {
       console.error('Error in updatetopic:', error);
